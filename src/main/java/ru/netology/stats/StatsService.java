@@ -4,31 +4,28 @@ import static java.lang.Long.sum;
 
 public class StatsService {
 
-    public int sumAllSales(long[] sales) {
+    public long sumAllSales(long[] sales) { //сумма всех продаж
         long sum = 0; // первоначальная сумма всех продаж
 
         for (long sale : sales) {
             sum = sum + sale;
         }
 
-        return (int) sum; //
+        return sum;
     }
 
 
-    public int getAverageSumSales(long[] sales) { //возвращаем сумму всех продаж
+    public long getAverageSumSales(long[] sales) { //возвращаем сумму всех продаж
         long sum = sumAllSales(sales) / sales.length;       // вычисляем среднюю сумму продаж
-        return (int) sum;
+        return sum;
     }
 
 
-    public int maxSales(long[] sales) {
+    public long maxSales(long[] sales) {
         int maxMonth = 0; // номер месяца с максимальными продажами среди просмотренных ранее
 
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[maxMonth]) { // значит, в рассматриваемом i-м месяце продаж больше
-                maxMonth = i; // запомним его как максимальный
-            }
-            if (sales[i] == sales[maxMonth]) { // значит, в рассматриваемом i-м месяце продаж больше
                 maxMonth = i; // запомним его как максимальный
             }
         }
@@ -37,7 +34,7 @@ public class StatsService {
     }
 
 
-    public int minSales(long[] sales) {
+    public long minSales(long[] sales) {
         int minMonth = 0; // номер месяца с минимальными продажами среди просмотренных ранее
 
         for (int i = 0; i < sales.length; i++) {
@@ -50,9 +47,9 @@ public class StatsService {
     }
 
 
-    public int countMonthsBelowAverage(long[] sales) { //количество месяцев, в которых продажи были ниже среднего
+    public long countMonthsBelowAverage(long[] sales) { //количество месяцев, в которых продажи были ниже среднего
         int count = 0; //количество месяцев
-        int averageSales = getAverageSumSales(sales);
+        long averageSales = getAverageSumSales(sales);
         for (long sale : sales) {
             if (sale < averageSales) {
                 count++;
@@ -62,9 +59,9 @@ public class StatsService {
     }
 
 
-    public int countMonthsAboveAverage(long[] sales) { //количество месяцев, в которых продажи были выше среднего
+    public long countMonthsAboveAverage(long[] sales) { //количество месяцев, в которых продажи были выше среднего
         int count = 0; //количество месяцев
-        int averageSales = getAverageSumSales(sales);
+        long averageSales = getAverageSumSales(sales);
         for (long sale : sales) {
             if (sale > averageSales) {
                 count++;
